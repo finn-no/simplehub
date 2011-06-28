@@ -1,0 +1,17 @@
+<h1>Event hub</h1>
+
+Simple implementation of a publish subscribe module.
+
+<strong>Example</strong>
+
+<pre><code>
+// Subscribe to a topic
+FINN.eventHub.subscribe("someTopic", function(data){
+	...
+});
+// Publish a topic
+FINN.eventHub.publish("someTopic", {text: "hello world"});
+</code></pre>
+
+<h1>Author</h1>
+Espen Dalløkken
