@@ -38,7 +38,22 @@
 			assertFalse(hub2Spy.calledOnce);
 			assertEquals(1, hub.numSubscribers("Eventen"));
 			assertEquals(1, hub2.numSubscribers("Eventen"));			
-		}
+		},
+		"test should allow new hubs to be created without specifying options":function(){
+			var hub = FINN.eventHub.create();
+			var hub	= FINN.eventHub.create(),
+				hub2 = FINN.eventHub.create();
+			var hubSpy = sinon.spy(),
+				hub2Spy = sinon.spy();
+			hub.subscribe("Eventen", hubSpy);
+			hub2.subscribe("Eventen", hub2Spy);
+			hub.publish("Eventen", {msg: "hola"});
+			assertTrue(hubSpy.calledOnce);
+			assertFalse(hub2Spy.calledOnce);
+			assertEquals(1, hub.numSubscribers("Eventen"));
+			assertEquals(1, hub2.numSubscribers("Eventen"));			
+			
+		}		
 	});
     TestCase("Should provide for dispatching events", {
         "test should append the topic as a last argument when publishing events": function(){

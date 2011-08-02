@@ -65,6 +65,7 @@ FINN.eventHub = (function(){
     }
     var api = {
 		create: function(options){
+			options = options || {subscribers: []};
 			var o = extend(Object.create(this), options);
 			return o;
 		},
