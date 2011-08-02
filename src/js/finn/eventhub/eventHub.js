@@ -1,9 +1,20 @@
 var FINN = FINN || {};
-
 FINN.eventHub = (function(){
-    var subscribers = [];
+	var subscribers = [];
+	function extend(obj, extObj) {
+	    if (arguments.length > 2) {
+	        for (var a = 1; a < arguments.length; a++) {
+	            extend(obj, arguments[a]);
+	        }
+	    } else {
+	        for (var i in extObj) {
+	            obj[i] = extObj[i];
+	        }
+	    }
+	    return obj;
+	}
     function publishTopic(topic){
-        var callbacks = subscribers[topic] || [];
+        var callbacks = this.subscribers[topic] || [];
         var args = Array.prototype.slice.call(arguments, 1);
         for (var i=0, l = callbacks.length; i < l; i++){
             try {
@@ -14,25 +25,25 @@ FINN.eventHub = (function(){
     }
     function addSubscriber(topic, callback){
         if (typeof callback != "function") throw new TypeError("Callbacks must be functions");
-        if (!subscribers[topic]){
-            subscribers[topic] = [];
+        if (!this.subscribers[topic]){
+            this.subscribers[topic] = [];
         }
-        subscribers[topic].push(callback);
+        this.subscribers[topic].push(callback);
     }
     function removeSubscriber(topic, callback){
-        if (subscribers[topic] == undefined){
+        if (this.subscribers[topic] == undefined){
             return;
         }
-        var topicSubscribers = subscribers[topic];
+        var topicSubscribers = this.subscribers[topic];
         for (var i=0, l = topicSubscribers.length; i<l; i++){
             if (topicSubscribers[i] == callback){
                 topicSubscribers.splice(i,1);
             }
         }
-        subscribers[topic] = topicSubscribers;
+        this.subscribers[topic] = topicSubscribers;
     }
     function isRegistered(topic, callback){
-        var allCallbacks = subscribers[topic];
+        var allCallbacks = this.subscribers[topic];
         if (allCallbacks !== undefined){
             for (var i=0, l = allCallbacks.length; i<l; i++){
                 if (allCallbacks[i] === callback){
@@ -43,16 +54,20 @@ FINN.eventHub = (function(){
         return false;
     }
     function hasSubscribers(eventName){
-        return numSubscribers(eventName) > 0;
+        return this.numSubscribers(eventName) > 0;
     }
     function numSubscribers(topic){
-        if (subscribers[topic]){
-            return subscribers[topic].length;
+        if (this.subscribers[topic]){
+            return this.subscribers[topic].length;
         } else {
-            return 0;
-        }
+			return 0;
+		}
     }
     var api = {
+		create: function(options){
+			var o = extend(Object.create(this), options);
+			return o;
+		},
         publish: publishTopic,
         subscribe: addSubscriber,
         unsubscribe: removeSubscriber,
@@ -61,4 +76,4 @@ FINN.eventHub = (function(){
         numSubscribers: numSubscribers
     };
     return api;
-})();
+}());
