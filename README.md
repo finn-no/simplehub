@@ -23,4 +23,4 @@ Author
 ------------
 Espen Dalløkken
 
-Bugs or other types of feedback hit me on [http://twitter.com/FINN_tech](@FINN_tech).
+Bugs or other types of feedback hit me on [@FINN_tech](http://twitter.com/FINN_tech).
