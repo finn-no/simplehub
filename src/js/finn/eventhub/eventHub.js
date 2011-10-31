@@ -1,5 +1,7 @@
 var FINN = FINN || {};
 FINN.eventHub = (function(){
+    var objCreate = Object.create || function (o) {function F() {}F.prototype = o;return new F();};
+
 	function extend(obj, extObj) {
 	    if (arguments.length > 2) {
 	        for (var a = 1; a < arguments.length; a++) {
@@ -64,7 +66,7 @@ FINN.eventHub = (function(){
     }
     var api = {
 		create: function(options){
-			var o = extend(Object.create(this), options, {subscribers: []});
+			var o = extend(objCreate(this), options, {subscribers: []});
 			return o;
 		},
         publish: publishTopic,
