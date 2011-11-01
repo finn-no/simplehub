@@ -19,8 +19,7 @@ Example
 			FINN.eventHub.pubslish("..", {});
 			FINN.eventHub.subscribe("..", function(){});
 
-Author
+Feedback or questions?
 ------------
-Espen Dalløkken
 
 Bugs or other types of feedback hit me on [@FINN_tech](http://twitter.com/FINN_tech).
