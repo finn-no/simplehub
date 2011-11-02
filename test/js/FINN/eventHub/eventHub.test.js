@@ -71,6 +71,16 @@
             hub.publish("ploppic", {});
             assertTrue("Should call callback function when dispatching event", spy.called);
         },
+		"test should provide clients with ability to catch errors occuring when throwing events callback functions":function(){
+			FINN.eventHub.subscribe("throwError", function(){throw new Error("This is wrong, dead wrong!")});
+			var wasThrown = false;
+			try {
+				FINN.eventHub.publish("throwError", "");
+			} catch(e){
+				wasThrown = true;
+			}
+			assertTrue(wasThrown);
+		},
         "test should call all registered function when an event is dispatched": function(){
             var hub = FINN.eventHub.create({subscribers: []});
             var spy1 = sinon.spy();
