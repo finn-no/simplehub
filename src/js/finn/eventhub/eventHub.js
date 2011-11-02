@@ -21,7 +21,9 @@ FINN.eventHub = (function(){
             try {
 				args.push(topic);
                 callbacks[i].apply(null, args);
-            } catch(e){}
+            } catch(e){
+				throw e;
+			}
         }
     }
     function addSubscriber(topic, callback){
