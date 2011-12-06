@@ -57,12 +57,16 @@
 	});
     TestCase("Should provide for dispatching events", {
         "test should append the topic as a last argument when publishing events": function(){
-            var spy = sinon.spy();
+            var spy1 = sinon.spy();
+            var spy2 = sinon.spy();
 			var hub = FINN.eventHub.create({subscribers: []});
-            hub.subscribe("ploppic", spy);
+            hub.subscribe("ploppic", spy1);
+            hub.subscribe("ploppic", spy2);
             hub.publish("ploppic", {});
-            assertEquals("Should initiate callback with two arguments", 2, spy.getCall(0).args.length);
-            assertEquals("Should add the topic as the last argument for callback function", "ploppic", spy.getCall(0).args[1]);
+            assertEquals("Should initiate callback with two arguments", 2, spy1.getCall(0).args.length);
+            assertEquals("Should add the topic as the last argument for callback function", "ploppic", spy1.getCall(0).args[1]);
+            assertEquals("Should initiate callback with two arguments", 2, spy2.getCall(0).args.length);
+            assertEquals("Should add the topic as the last argument for callback function", "ploppic", spy2.getCall(0).args[1]);
         },
         "test should call callback function when dispatching event": function(){
             var hub = FINN.eventHub.create({subscribers: []});
