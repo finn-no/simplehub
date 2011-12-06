@@ -17,10 +17,10 @@ FINN.eventHub = (function(){
     function publishTopic(topic){
         var callbacks = this.subscribers[topic] || [];
         var args = Array.prototype.slice.call(arguments, 1);
+		args.push(topic);
         for (var i=0, l = callbacks.length; i < l; i++){
 			var topicCallbacks = callbacks[i];
             try {
-				args.push(topic);
                 topicCallbacks.callback.apply(null, args);
             } catch(e){
 				if (typeof topicCallbacks.errorCallback !== "undefined"){
