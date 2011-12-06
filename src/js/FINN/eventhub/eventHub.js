@@ -18,20 +18,23 @@ FINN.eventHub = (function(){
         var callbacks = this.subscribers[topic] || [];
         var args = Array.prototype.slice.call(arguments, 1);
         for (var i=0, l = callbacks.length; i < l; i++){
+			var topicCallbacks = callbacks[i];
             try {
 				args.push(topic);
-                callbacks[i].apply(null, args);
+                topicCallbacks.callback.apply(null, args);
             } catch(e){
-				throw e;
+				if (typeof topicCallbacks.errorCallback !== "undefined"){
+					topicCallbacks.errorCallback.apply(null, e);
+				}
 			}
         }
     }
-    function addSubscriber(topic, callback){
+    function addSubscriber(topic, callback, errorCallback){
         if (typeof callback != "function") throw new TypeError("Callbacks must be functions");
         if (!this.subscribers[topic]){
             this.subscribers[topic] = [];
         }
-        this.subscribers[topic].push(callback);
+        this.subscribers[topic].push({"callback": callback, "errorCallback": errorCallback});
     }
     function removeSubscriber(topic, callback){
         if (this.subscribers[topic] == undefined){
