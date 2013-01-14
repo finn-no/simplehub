@@ -1,9 +1,10 @@
 Event Hub 
 ============
 
-Simple implementation of a publish subscribe module.
+Simple implementation of a publish subscribe module in the browser. It is dead simple and has no dependencies. 
 Provides you with an easy way to do event based applications without using the DOM.
 
+Can be used to drive application flow with application wide hubs or be used to decouple UI widgets. You can have one large hub or multiple small hubs in your application
 
 Example
 ------------
