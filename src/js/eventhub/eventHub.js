@@ -1,5 +1,4 @@
-var FINN = FINN || {};
-FINN.eventHub = (function(){
+var eventHub = (function(){
     var objCreate = Object.create || function (o) {function F() {}F.prototype = o;return new F();};
 
 	function extend(obj, extObj) {

@@ -8,7 +8,7 @@ Provides you with an easy way to do event based applications without using the D
 Example
 ------------
 		// Subscribe to a topic
-		var hub = FINN.eventHub.create();
+		var hub = eventHub.create();
 		hub.subscribe("someTopic", function(data){
 			console.log(data.text);
 			});
@@ -16,8 +16,8 @@ Example
 			hub.publish("someTopic", {text: "hello world"});
 
 			// You can also use the hub right out of the box, like so
-			FINN.eventHub.pubslish("..", {});
-			FINN.eventHub.subscribe("..", function(){});
+			eventHub.pubslish("..", {});
+			eventHub.subscribe("..", function(){});
 
 Feedback or questions?
 ------------
