@@ -1,0 +1,16 @@
+{
+	"name": "eventhub",
+	"version": "2.0.0",
+	"phantomVersion": "1.9.0",
+	"author": "Espen Dalløkken",
+	"main": "./lib/eventHub",
+	"devDependencies": {
+		"karma": ">=0.10",
+		"karma-chrome-launcher": "~0.1",
+		"karma-jasmine": "~0.1",
+		"karma-firefox-launcher": "~0.1",
+		"karma-safari-launcher": "~0.1",
+		"karma-ie-launcher": "~0.1",
+		"karma-buster-assertions-plugin": "0.0.4"
+	}
+}
