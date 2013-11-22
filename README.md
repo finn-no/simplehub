@@ -17,7 +17,7 @@ Example
 			hub.publish("someTopic", {text: "hello world"});
 
 			// You can also use the hub right out of the box, like so
-			eventHub.pubslish("..", {});
+			eventHub.publish("..", {});
 			eventHub.subscribe("..", function(){});
 
 Feedback or questions?
