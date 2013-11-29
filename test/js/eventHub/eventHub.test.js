@@ -78,7 +78,9 @@
 		"test should provide clients with ability to provide error handler function when errors throwing in callback functions":function(){
 			var errorCallback = sinon.spy();
 			eventHub.subscribe("throwError", function(){throw new Error("This is wrong, dead wrong!")}, errorCallback);
-			eventHub.publish("throwError", "");
+                        try {
+                            eventHub.publish("throwError", "");
+                        } catch (e) {}
 			assertTrue(errorCallback.calledOnce);
 			eventHub.subscribe("throwError", function(){throw new Error("est should not throw error as no error callback is registered!")});
 		},
@@ -102,6 +104,25 @@
             hub.subscribe("ploppic", callback);
             hub.publish("ploppic", "a", "b", "c");
             assertEquals(4, callback.getCall(0).args.length);
+        },
+        "test should not swallow event listener exceptions": function(){
+            var hub = eventHub.create();
+            var callback = sinon.stub().throws();
+            hub.subscribe("ploppic", callback);
+            assertException(function () {
+                hub.publish("ploppic");
+            });
+        },
+        "test badly behaved listeners should not block successive listeners": function(){
+            var hub = eventHub.create();
+            var callbacks = [sinon.spy(), sinon.stub().throws(), sinon.spy()];
+            hub.subscribe("ploppic", callbacks[0]);
+            hub.subscribe("ploppic", callbacks[1]);
+            hub.subscribe("ploppic", callbacks[2]);
+            try { hub.publish("ploppic"); } catch (e) {}
+            assertTrue(callbacks[0].called);
+            assertTrue(callbacks[1].called);
+            assertTrue(callbacks[2].called);
         }
     });
 })();

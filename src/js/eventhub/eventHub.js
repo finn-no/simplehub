@@ -17,15 +17,24 @@ var eventHub = (function(){
         var callbacks = this.subscribers[topic] || [];
         var args = Array.prototype.slice.call(arguments, 1);
 		args.push(topic);
+        var exceptions = [];
         for (var i=0, l = callbacks.length; i < l; i++){
 			var topicCallbacks = callbacks[i];
             try {
                 topicCallbacks.callback.apply(null, args);
             } catch(e){
+                exceptions.push(e);
 				if (typeof topicCallbacks.errorCallback !== "undefined"){
 					topicCallbacks.errorCallback.apply(null, e);
 				}
 			}
+        }
+        if (exceptions.length > 0) {
+            var err = new Error("eventHub listener(s) threw exception while " +
+                                "publishing '" + topic + "'. " +
+                                "See error.exceptions for original exceptions " +
+                                "and stack traces.");
+            throw err;
         }
     }
     function addSubscriber(topic, callback, errorCallback){
