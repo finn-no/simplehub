@@ -7,9 +7,9 @@ module.exports = function(config){
         frameworks: ['jasmine'],
         files: [
             'test/js/lib/vojtajina-jstd-adapter.js',
-            'lib/eventhub/**/*.js',
+            'lib/eventHub/**/*.js',
             'test/js/lib/**/*.js',
-            'test/js/eventhub/**/*.js'
+            'test/js/eventHub/**/*.js'
         ],
 
         exclude: [
