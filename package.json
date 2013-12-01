@@ -4,6 +4,14 @@
 	"phantomVersion": "1.9.0",
 	"author": "Espen Dalløkken",
 	"main": "./lib/eventHub",
+	"repository": {
+		"type": "git",
+	    "url": "https://github.com/finn-no/carousel-js"
+	},
+	"issues": "https://github.com/finn-no/carousel-js/issues",
+	"scripts": {
+	 	"test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+	},
 	"devDependencies": {
 		"karma": ">=0.10",
 		"karma-chrome-launcher": "~0.1",
