@@ -1,7 +1,7 @@
 Event Hub 
 ============
 
-[![travis status](https://api.travis-ci.org/finn-no/eventHub.png)](https://travis-ci.org/finn-no/eventHub/)
+[![travis status](https://api.travis-ci.org/finn-no/eventhub.png)](https://travis-ci.org/finn-no/eventhub)
 
 Simple implementation of a publish subscribe module in the browser. It is dead simple and has no dependencies. It can be used in the browser or on the server
 
