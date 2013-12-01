@@ -20,8 +20,7 @@
             hub.subscribe("anUniqueEventOfSomeKinde", function(){});
             assertEquals(1, hub.numSubscribers("anUniqueEventOfSomeKinde"));
             hub.unsubscribe("anUniqueEventOfSomeKinde");
-            assertEquals("Should have removed subscription",
-                    1, hub.numSubscribers("anUniqueEventOfSomeKinde"));
+            assertEquals("Should have removed subscription", 1, hub.numSubscribers("anUniqueEventOfSomeKinde"));
             assertFalse("Should remove the topic when there are no more subscribers", hub.hasSubscribers());
         }
     });
@@ -78,11 +77,11 @@
 		"test should provide clients with ability to provide error handler function when errors throwing in callback functions":function(){
 			var errorCallback = sinon.spy();
 			eventHub.subscribe("throwError", function(){throw new Error("This is wrong, dead wrong!")}, errorCallback);
-                        try {
-                            eventHub.publish("throwError", "");
-                        } catch (e) {}
+            try {
+                eventHub.publish("throwError", "");
+            } catch (e) {}
 			assertTrue(errorCallback.calledOnce);
-			eventHub.subscribe("throwError", function(){throw new Error("est should not throw error as no error callback is registered!")});
+			eventHub.subscribe("throwError", function(){throw new Error("Test should not throw error as no error callback is registered!")});
 		},
         "test should call all registered function when an event is dispatched": function(){
             var hub = eventHub.create({subscribers: []});
