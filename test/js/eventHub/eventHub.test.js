@@ -22,6 +22,34 @@
             hub.unsubscribe("anUniqueEventOfSomeKinde");
             assertEquals("Should have removed subscription", 1, hub.numSubscribers("anUniqueEventOfSomeKinde"));
             assertFalse("Should remove the topic when there are no more subscribers", hub.hasSubscribers());
+        },
+        "test should provide for un-registering when multiple listeners": function() {
+            var hub = eventHub.create();
+            assertEquals(0, hub.numSubscribers("anUniqueEventOfSomeKinde"));
+            function f1() {}
+            function f2() {}
+
+            hub.subscribe("anUniqueEventOfSomeKinde", f1);
+            hub.subscribe("anUniqueEventOfSomeKinde", f2);
+
+            assertEquals(2, hub.numSubscribers("anUniqueEventOfSomeKinde"));
+            hub.unsubscribe("anUniqueEventOfSomeKinde", f1);
+            assertEquals("Should have removed subscription",
+                1, hub.numSubscribers("anUniqueEventOfSomeKinde"));
+        },
+        "test should handle unsubscribing in callback": function() {
+            var hub = eventHub.create();
+            assertEquals(0, hub.numSubscribers("anUniqueEventOfSomeKinde"));
+
+            function f1() {
+                hub.unsubscribe("anUniqueEventOfSomeKinde", f1);
+            }
+            function f2() {}
+            hub.subscribe("anUniqueEventOfSomeKinde", f1);
+            hub.subscribe("anUniqueEventOfSomeKinde", f2);
+            hub.publish("anUniqueEventOfSomeKinde", {});
+            assertEquals("Should have removed subscription",
+                1, hub.numSubscribers("anUniqueEventOfSomeKinde"));
         }
     });
 	TestCase("Should behave as a separate instance", {
