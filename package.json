@@ -1,14 +1,14 @@
 {
-	"name": "eventhub",
+	"name": "eventHub",
 	"version": "2.0.0",
 	"phantomVersion": "1.9.0",
 	"author": "Espen Dalløkken",
 	"main": "./lib/eventHub",
 	"repository": {
 		"type": "git",
-	    "url": "https://github.com/finn-no/carousel-js"
+	    "url": "https://github.com/finn-no/eventHub"
 	},
-	"issues": "https://github.com/finn-no/carousel-js/issues",
+	"issues": "https://github.com/finn-no/eventHub/issues",
 	"scripts": {
 	 	"test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
 	},
