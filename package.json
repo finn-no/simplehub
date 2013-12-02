@@ -1,14 +1,14 @@
 {
-	"name": "eventHub",
+	"name": "simplehub",
 	"version": "2.0.0",
 	"phantomVersion": "1.9.0",
 	"author": "Espen Dalløkken",
-	"main": "./lib/eventHub",
+	"main": "./lib/simplehub",
 	"repository": {
 		"type": "git",
-	    "url": "https://github.com/finn-no/eventHub"
+	    "url": "https://github.com/finn-no/simplehub"
 	},
-	"issues": "https://github.com/finn-no/eventHub/issues",
+	"issues": "https://github.com/finn-no/simplehub/issues",
 	"scripts": {
 	 	"test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
 	},
