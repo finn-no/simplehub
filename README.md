@@ -3,6 +3,9 @@ simplehub
 
 [![travis status](https://api.travis-ci.org/finn-no/simplehub.png)](https://travis-ci.org/finn-no/simplehub)
 
+[![NPM](https://nodei.co/npm/simplehub.png?stars&downloads)](https://nodei.co/npm/simplehub/)
+[![NPM](https://nodei.co/npm-dl/simplehub.png)](https://nodei.co/npm/simplehub/)
+
 This is a simple implementation of a publish subscribe module in JavaScript. It can be used in the browser (CommonJS, AMD or just vanilla JS is supported) or on the server as a node module.
 
 ## Usage
