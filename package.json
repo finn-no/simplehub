@@ -1,6 +1,6 @@
 {
 	"name": "simplehub",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"phantomVersion": "1.9.0",
 	"author": "Espen Dalløkken",
 	"main": "./lib/simplehub",
