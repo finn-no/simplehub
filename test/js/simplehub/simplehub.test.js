@@ -59,6 +59,8 @@
             hub.publish("xxx/yyy", "");
             assert.equals(0, callback.callCount);
         });
+    });
+    describe("Should provide error handling", function(){
         it("should provide for having an error callback handler", function() {
             var hub = simplehub.create();
             var errorCallback = sinon.spy();
@@ -67,6 +69,16 @@
             }, errorCallback);
             hub.publish("xxx-xxx", "");
             assert.isTrue(errorCallback.calledOnce);
+        });
+        it("Should provide for throwing errors with stack trace info", function(){
+            var hub = simplehub.create();
+            hub.subscribe("error", function(){
+                throw new Error("SomeError");
+            });
+
+            assert.exception(function(){
+                hub.publish("error", "I am error");
+            });
         });
     });
     describe("Should behave as a separate instance", function(){
@@ -160,6 +172,5 @@
             assert.equals(4, callback.getCall(0).args.length);
         });
     });
-
 
 })();
