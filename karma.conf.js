@@ -4,9 +4,8 @@ module.exports = function(config){
 
     config.set({
         basePath: '',
-        frameworks: ['jasmine'],
+        frameworks: ['mocha', 'referee'],
         files: [
-            'test/js/lib/vojtajina-jstd-adapter.js',
             'lib/**/*.js',
             'test/js/lib/**/*.js',
             'test/js/**/*.js'
@@ -35,11 +34,7 @@ module.exports = function(config){
         captureTimeout: 60000,
         singleRun: false,
         plugins: [
-            'karma-jasmine',
-            'karma-phantomjs-launcher',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-safari-launcher'
+            'karma-*'
         ]
     });
 };
