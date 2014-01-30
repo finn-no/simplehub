@@ -14,11 +14,11 @@
 	},
 	"devDependencies": {
 		"karma": ">=0.10",
+		"karma-mocha": "~0.1.1",
+		"karma-referee": "~0.2.0",
 		"karma-chrome-launcher": "~0.1",
-		"karma-jasmine": "~0.1",
 		"karma-firefox-launcher": "~0.1",
 		"karma-safari-launcher": "~0.1",
-		"karma-ie-launcher": "~0.1",
-		"karma-buster-assertions-plugin": "0.0.4"
+		"karma-ie-launcher": "~0.1"
 	}
 }
