@@ -1,5 +1,4 @@
-simplehub
-============
+# simplehub
 
 [![travis status](https://api.travis-ci.org/finn-no/simplehub.png)](https://travis-ci.org/finn-no/simplehub)
 
