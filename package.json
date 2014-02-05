@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "phantomVersion": "1.9.0",
   "author": "Espen Dalløkken",
-  "main": "./lib/simplehub",
+  "main": "./lib/simplehub/simplehub.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/finn-no/simplehub"
